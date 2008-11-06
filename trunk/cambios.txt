@@ -1,0 +1,12 @@
+Changes:
+================
+Aplicado Skin
+Cambio a ID3Tags con metaphile
+Solucionado problema con volumen
+Agregado soporte de shuffle/en orden
+Primer play arreglado
+Agregada Visualización
+Terminada la vista principal
+TrayIcon Support
+TODO:
+================

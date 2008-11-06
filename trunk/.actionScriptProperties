@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actionScriptProperties mainApplicationPath="SocialMediaPlayer.mxml" version="3">
+<compiler additionalCompilerArguments="-locale en_US" copyDependentFiles="true" enableModuleDebug="true" generateAccessible="false" htmlExpressInstall="true" htmlGenerate="false" htmlHistoryManagement="false" htmlPlayerVersion="9.0.28" htmlPlayerVersionCheck="true" outputFolderPath="bin-debug" sourceFolderPath="src" strict="true" useApolloConfig="true" verifyDigests="true" warn="true">
+<compilerSourcePath/>
+<libraryPath defaultLinkType="1">
+<libraryPathEntry kind="4" path=""/>
+<libraryPathEntry kind="1" linkType="1" path="libs"/>
+</libraryPath>
+<sourceAttachmentPath/>
+</compiler>
+<applications>
+<application path="SocialMediaPlayer.mxml"/>
+</applications>
+<modules>
+<module application="src/SocialMediaPlayer.mxml" destPath="modules/views/DefaultView/DefaultView.swf" optimize="true" sourcePath="src/modules/views/DefaultView/DefaultView.mxml"/>
+<module application="src/SocialMediaPlayer.mxml" destPath="modules/views/DividedView/DividedView.swf" optimize="true" sourcePath="src/modules/views/DividedView/DividedView.mxml"/>
+<module application="src/SocialMediaPlayer.mxml" destPath="modules/menu/PlayerPreferences/Player.swf" optimize="true" sourcePath="src/modules/menu/PlayerPreferences/Player.mxml"/>
+<module application="src/SocialMediaPlayer.mxml" destPath="modules/preferences/PlayerPreferences/Player.swf" optimize="true" sourcePath="src/modules/preferences/PlayerPreferences/Player.mxml"/>
+</modules>
+<buildCSSFiles>
+<buildCSSFileEntry destPath="bin-debug" sourcePath="src/skins/darkroom.css"/>
+</buildCSSFiles>
+</actionScriptProperties>

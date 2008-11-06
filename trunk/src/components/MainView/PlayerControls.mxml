@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%">
+	<mx:Script>
+		<![CDATA[
+			import mx.core.Application;
+		]]>
+	</mx:Script>
+	<mx:VBox width="350" height="64" horizontalAlign="center" verticalAlign="middle" verticalGap="0">
+			<mx:Text text="Cancion" id="player_song" fontWeight="bold" alpha="1.0"/>
+			<mx:Text text="Grupo" id="player_artist"/>
+			<mx:Text text="Album" id="player_album" fontWeight="normal"/>
+		</mx:VBox>
+		<mx:VBox width="100%" height="100%" verticalAlign="middle">
+			<mx:HSlider allowTrackClick="true" id="player_trackslider" width="100%" minimum="0" maximum="1000" snapInterval="0.25" liveDragging="true"  change="{Application.application.plyr.positionChange(event)}" />
+			<mx:HBox width="100%" horizontalAlign="right" horizontalGap="1" verticalAlign="middle">
+				<mx:Text text="00:00 / 00:00" id="player_time" fontWeight="bold"/>
+				<mx:Spacer width="10"/>
+				<mx:Button id="player_previous" cornerRadius="0" click="Application.application.plyr.PrevSong()">
+					<mx:icon>@Embed(source='../../images/player/gtk-media-previous-ltr.png')</mx:icon>
+				</mx:Button>
+				<mx:Button id="player_play" cornerRadius="0" click="Application.application.plyr.Play()" width="65">
+					<mx:icon>@Embed(source='../../images/player/gtk-media-play-ltr.png')</mx:icon>
+				</mx:Button>
+				<mx:Button id="player_pause" cornerRadius="0" click="Application.application.plyr.Play()" visible="false" width="0">
+					<mx:icon>@Embed(source='../../images/player/gtk-media-pause.png')</mx:icon>
+				</mx:Button>
+				<mx:Button id="player_next" cornerRadius="0" click="Application.application.plyr.NextSong()">
+					<mx:icon>@Embed(source='../../images/player/gtk-media-previous-rtl.png')</mx:icon>
+				</mx:Button>
+				<mx:Spacer width="10"/>
+				<mx:CheckBox id="shuffle" label="Shuffle"/>
+				<mx:Spacer width="10"/>
+				<mx:Label text="     Volume:"/>
+				<mx:HSlider id="volume_slider" minimum="0" maximum="1" snapInterval="0.05" liveDragging="true" allowTrackClick="true" change="{Application.application.plyr.volumeChange(event)}" value="1"/>
+			</mx:HBox>
+		</mx:VBox>
+</mx:HBox>
