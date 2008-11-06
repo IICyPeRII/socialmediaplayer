@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" creationComplete="{init()}"
+	xmlns:comps="components.MainView.BottomPanel.*" xmlns:fx="com.fusiox.ui.*">
+	<mx:Script source="code/bottom_panel.as" />
+	<mx:Accordion width="100%" height="100%">
+		<mx:VBox id="appBarBox" width="100%" height="100%" verticalAlign="bottom"
+			label="Visualization">
+			<fx:Visualization id="visual_eq" width="100%" height="100%" type="bars"  bars="64"
+				beforeVisualization="{verticalBlur(event), verticalScroll(event)}" channel="stereo" 
+			    />
+		</mx:VBox>
+		<!--<comps:SearchBox />-->
+		
+		
+	</mx:Accordion>
+							
+</mx:VBox>

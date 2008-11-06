@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VDividedBox xmlns:mx="http://www.adobe.com/2006/mxml" width="200" height="100%" xmlns:fx="com.fusiox.ui.*">
+	<mx:Script>
+		<![CDATA[
+			import mx.core.Application;
+		]]>
+	</mx:Script>
+	<mx:Accordion width="200" height="60%">
+		<mx:Canvas label="Media" width="100%" height="100%">
+			<mx:Tree id="media_tree" width="100%" height="100%" labelField="@label" 
+				showRoot="false" change="Application.application.media.refresh()" 
+			 	/>
+		</mx:Canvas>
+		<mx:Canvas label="Queue" width="100%" height="100%">
+		</mx:Canvas>
+	</mx:Accordion>
+	<mx:HBox width="100%" height="0" horizontalAlign="center" id="CoverBox" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+		<mx:Spacer width="5" />
+		<mx:VBox width="100%" height="100%" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+			<mx:Image id="SongArt" render="reflection.drawReflection();" source="images/player/cover_example.jpg" scaleContent="true" width="185" height="175"/>
+			<fx:Reflection id="reflection" target="{SongArt}" width="{SongArt.width}" height="20" />								
+		</mx:VBox>
+	</mx:HBox>
+</mx:VDividedBox>

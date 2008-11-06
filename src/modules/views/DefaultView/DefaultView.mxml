@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Module xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" width="100%" height="100%" xmlns:ns1="SocialMediaPlayer.*">
+	<mx:Script source="DefaultView.as" /> 
+	<ns1:MediaDataGrid id="MediaGrid" width="100%" height="100%" dataProvider="{datos}" doubleClick="{PlayFile()}" itemClick="{Selection(event)}">
+		<ns1:columns>
+			<mx:DataGridColumn headerText="°" dataField="TrackNumber" width="25" />
+			<mx:DataGridColumn headerText="Title" dataField="Title"/>
+			<mx:DataGridColumn headerText="Artist" dataField="Artist"/>
+			<mx:DataGridColumn headerText="Album" dataField="Album" sortDescending="true"/>
+			<mx:DataGridColumn headerText="Path" dataField="Path" visible="false"/>
+		</ns1:columns>
+	</ns1:MediaDataGrid>
+
+	
+</mx:Module>

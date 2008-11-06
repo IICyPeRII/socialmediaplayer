@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" 
+	fontFamily="Trebuchet MS" fontSize="10" width="1100" height="700" initialize="init()"  
+	xmlns:fx="com.fusiox.ui.*" styleName="darkGreyBg" xmlns:controls="nl.fxc.controls.*"
+	xmlns:player="components.MainView.*"
+	creationComplete="MediaTree()" systemTrayIconMenu="{myMenu}">
+	<mx:Script>
+		<![CDATA[
+			import nl.fxc.fx.StateDefine;
+			import components.TileImageRender;
+			import mx.utils.ObjectUtil;
+			import mx.collections.ArrayCollection;
+			import mx.controls.Alert;
+			import mx.effects.easing.Elastic;
+		]]>
+	</mx:Script>
+	<mx:XML format="e4x" id="menuData">
+        <root>
+            <menuitem label="Prev Song"/>
+            <menuitem label="Next Song"/>
+            <menuitem label="Play/Pause"/>
+            <menuitem type="separator"/>
+            <menuitem label="Website" />
+            <menuitem type="separator"/>
+            <menuitem label="Exit" />     
+        </root>
+    </mx:XML>
+	<mx:Script source="main.as" />
+	<mx:Script source="audioscrobbler.as" />
+	<mx:Style source="style/darkroom.css" />
+	<!-- Efects -->
+	<mx:Resize id="CoverBoxShow" duration="500" target="{left_panel.CoverBox}" heightTo="210"/>
+	<mx:Resize id="CoverBoxHide" duration="500" target="{left_panel.CoverBox}" heightTo="0"/>
+	<mx:Resize id="appRightPanelShow" duration="1000" target="{appRightPanel}" widthTo="270" />
+	<mx:Resize id="appRightPanelHide" duration="1000" target="{appRightPanel}" widthTo="0" />
+	<mx:DefaultTileListEffect id="myTileListEffect"
+            fadeOutDuration="500"
+            fadeInDuration="500"
+            moveDuration="1500" />
+	<!-- / Effects -->
+
+
+	<mx:ApplicationControlBar dock="true" cornerRadius="0" x="0" y="0" id="dock">
+		<player:PlayerControls id="player_controls" />
+	</mx:ApplicationControlBar>
+	<mx:VBox width="100%" height="100%" verticalGap="0">
+		<mx:Spacer height="5" width="100%" />
+		<mx:HBox width="100%">
+			<mx:MenuBar dataProvider="{menuMgr.MenuApp}" labelField="@label" width="100%" itemClick="{MenuClick(event)}"></mx:MenuBar>
+			<mx:Button id="updateButton" />
+		</mx:HBox>
+
+		<mx:HDividedBox width="100%" height="100%">
+			<player:LeftPanel id="left_panel" />
+			<mx:VDividedBox height="100%" width="100%">
+				<mx:ModuleLoader  width="100%" height="100%" id="ModLoader"/>
+				<mx:HBox id="appBox" width="100%" height="170" >
+					<player:BottomPanel id="bottom_panel"/>
+				</mx:HBox>	
+			</mx:VDividedBox>
+			<mx:VBox width="0" height="100%" id="appRightPanel">
+				<mx:Label text="Similar Artists" />
+				<controls:FXCGrid id="similar_artist" width="100%" height="100%"
+				    itemRenderer="components.TileImageRender" styleName="darkGreyBg"
+				    effectType="0" stateType="{StateDefine.BOTTOM}" />
+				<!--<mx:TileList id="similar_artist" width="100%" height="100%"
+					itemRenderer="components.TileImageRender"  styleName="darkGreyBg" columnCount="2"
+				 	/>-->
+			</mx:VBox>
+		</mx:HDividedBox>
+		
+		<mx:HBox width="100%" styleName="darkGreyBg">			
+			<mx:Label id="info" width="100%" />
+		</mx:HBox>
+	</mx:VBox>
+</mx:WindowedApplication>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" verticalAlign="middle" horizontalAlign="center"
+ width="120" height="100" horizontalScrollPolicy="off" verticalScrollPolicy="off" verticalGap="1">
+ <mx:Script>
+        <![CDATA[
+            import flash.utils.setTimeout;
+            [Bindable]
+            private var showLabels:Boolean = false;
+            private var _currentIndex:Number = -1;
+            
+            public function set currentIndex(value:Number):void{
+                this._currentIndex = value;
+                setTimeout(function():void{
+                    if(data.root == null){
+                        showLabels = true;
+                    }
+                }, currentIndex);
+            }
+            
+            public function get currentIndex():Number{
+                return this._currentIndex;
+            }
+            
+        ]]>
+    </mx:Script>
+	<mx:Image id="img" source="{data.image}" maxHeight="90" horizontalAlign="center"  autoLoad="true" 
+		scaleContent="true" width="100%" height="100%" />
+    <mx:Label text="{data.name}"  width="100%" height="16"/>
+</mx:VBox>

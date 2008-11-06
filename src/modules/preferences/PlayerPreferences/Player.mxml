@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Module xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" width="100%" height="100%" initialize="init()">
+	<mx:Script source="Player.as" />
+	<mx:HBox width="100%">
+		<mx:Label text="Media Path:"/>
+		<mx:TextInput width="264" id="media_path"/><mx:Button label="Select Path" click="{SelectPath()}" />
+	</mx:HBox>
+	<mx:HBox width="100%" horizontalAlign="right">
+		<mx:Button label="Cancel" click="{Cancel()}"/>
+		<mx:Button label="Accept" click="{Accept()}"/>
+	</mx:HBox>
+</mx:Module>
