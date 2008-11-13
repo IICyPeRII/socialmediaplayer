@@ -73,13 +73,14 @@ package SocialMediaPlayer
 		}
 		public function FetchOne(sql:String, param1:String = ""):String {
 			var result:SQLResult = DoSQL(sql, param1);
-			
-			for (var i:int = 0; i < result.data.length; i++) {
-        		for (var columnName:String in result.data[i]) {
-            		return result.data[i][columnName];
-        		}	
-        
-    		}
+			try {
+				for (var i:int = 0; i < result.data.length; i++) {
+	        		for (var columnName:String in result.data[i]) {
+	            		return result.data[i][columnName];
+	        		}	
+	        
+	    		}
+	  		} catch(e) {return null;}
 
 			return null;
 		}

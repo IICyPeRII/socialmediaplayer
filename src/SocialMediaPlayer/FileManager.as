@@ -23,6 +23,7 @@ package SocialMediaPlayer
 		
 		private var mediaPath:String;
 		private var SQLConn:SQLiteConnector = Application.application.SQLConn;	
+		private var settingsMgr:SettingsManager = Application.application.settingsMgr;
 		private var fileStr:FileStream;
 		private var loadMediaTotal:int;
 		private var loadMediaCurrent:int;
@@ -30,15 +31,18 @@ package SocialMediaPlayer
 
 		}
 		public function get MediaPath():String { 
-			var sql:String = 
-			"	SELECT	MediaPath FROM Preferences";
-			return SQLConn.FetchOne(sql); 
+			return settingsMgr.MediaPath;
 		}
-		public function set MediaPath(setValue:String):void { mediaPath = setValue; }
+		public function set MediaPath(setValue:String):void { 
+			mediaPath = setValue; 
+			settingsMgr.MediaPath = setValue;
+		}
 		
 		public function FindMedia(url:String = ""):void {
 			var directory:File = new File();
 			var file:File;
+			var mediaPath:String = this.MediaPath;
+			
 			if(mediaPath != null || mediaPath != "") {
 				// Recursive Function
 				if(url != "") {

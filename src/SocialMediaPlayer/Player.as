@@ -4,9 +4,13 @@
 //   http://www.villagranquiroz.cl
 package SocialMediaPlayer
 {
+	import com.adobe.air.notification.AbstractNotification;
+	import com.adobe.air.notification.Purr;
 	import com.metaphile.MetaReader;
 	import com.metaphile.id3.ID3Data;
 	import com.metaphile.id3.ID3Reader;
+	
+	import components.MainView.PlayerControls;
 	
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
@@ -39,11 +43,14 @@ package SocialMediaPlayer
 		private var reapeat:Boolean;
 		private var soundTransform:SoundTransform;
 		private var firstPlay:Boolean = true;
+		private var notification:Purr;
 		
 		public function Player()
 		{
 			// For Sound Volume Changing
 			soundTransform = new SoundTransform();
+			// Notifications
+			 notification = Application.application.notification;
 		}
 		public function LoadFile(file_url:String):void {
 			Application.application.bottom_panel.VisualizationColorChange();
@@ -248,17 +255,19 @@ package SocialMediaPlayer
         	reader.read(stream);
 		}
 		private function id3Complete(meta:ID3Data, path:String):void {
-			//trace(ObjectUtil.toString(meta));
+			var iconPath:String;
 			try {
 				if (meta.image != null) { 
 					SaveCoverArt(meta.image);
-					Application.application.SongArt.source = null;
-					Application.application.SongArt.source = File.documentsDirectory.resolvePath("cover.png").nativePath.toString();
-					
+					iconPath  = File.documentsDirectory.resolvePath("cover.png").nativePath.toString();
+					Application.application.left_panel.SongArt.source = null;
+					Application.application.left_panel.SongArt.source = iconPath;
+								
 					Application.application.CoverBoxShow.play();
 					//Application.application.SongArt.width = 100;
 				} else {
-					Application.application.left_panel.SongArt.source = "images/player/cover_example.jpg";
+					iconPath = "images/player/cover_example.jpg";
+					Application.application.left_panel.SongArt.source = iconPath;
 					Application.application.CoverBoxHide.play();
 				}
 				if(meta.title != null)
@@ -267,6 +276,13 @@ package SocialMediaPlayer
 					Application.application.player_controls.player_artist.text = meta.performer.text;
 				if(meta.subtitle != null)
 					Application.application.player_controls.player_album.text = meta.subtitle;
+					
+				// Notification
+				notification.clear();
+				notification.addTextNotificationByParams("Social Media Player:", "Song: " + Application.application.player_controls.player_song.text + "\r" + 
+																		"Album: " + Application.application.player_controls.player_album.text + "\r" +
+																		"Artist: "  + Application.application.player_controls.player_artist.text, 
+														 AbstractNotification.BOTTOM_RIGHT, 6); 
 				/*if(frames["TDRL"])
 					Application.application.player_song.text += frames["TDRL"].text;*/
 			} catch (error:Error) {
