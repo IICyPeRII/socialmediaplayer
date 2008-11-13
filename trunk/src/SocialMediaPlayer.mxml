@@ -20,6 +20,8 @@
             <menuitem label="Next Song"/>
             <menuitem label="Play/Pause"/>
             <menuitem type="separator"/>
+            <menuitem label="Tweet Song!"/>
+            <menuitem type="separator"/>
             <menuitem label="Website" />
             <menuitem type="separator"/>
             <menuitem label="Exit" />     
@@ -47,6 +49,7 @@
 		<mx:Spacer height="5" width="100%" />
 		<mx:HBox width="100%">
 			<mx:MenuBar dataProvider="{menuMgr.MenuApp}" labelField="@label" width="100%" itemClick="{MenuClick(event)}"></mx:MenuBar>
+			<mx:Button label="Tweet Song" click="{TweetSong()}" />
 			<mx:Button id="updateButton" />
 		</mx:HBox>
 

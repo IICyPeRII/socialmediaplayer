@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" width="650" height="500" showCloseButton="true" close="{Close()}">
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" width="650" height="500" showCloseButton="true" 
+	close="{Close()}" initialize="init()">
 <mx:Script>
 	<![CDATA[
+		import mx.core.Application;
 		import mx.managers.PopUpManager;
 
+
+		private function init():void {
+			Application.application.currentPopUp = this;		
+		}
 		public function Close():void {
 			PopUpManager.removePopUp(this);
 		}
